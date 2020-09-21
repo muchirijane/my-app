@@ -74,14 +74,51 @@ class App extends Component {
       })
    };
 
+    nameHandler = (e) => {
+       this.setState({
+         person: [{
+            name: 'Jane',
+            job: 'devloper 👩‍💻 ',
+            date: Date()
+         },
+         {
+            name: e.target.value,
+            job: 'blogger 💻  ',
+            date: Date()
+         },
+         {
+            name: 'Jack',
+            job: 'muscian 🎻 ',
+            date: Date()
+         },
+         {
+            name: 'Tom',
+            job: 'actor 🎥 ',
+            date: Date()
+         },
+
+      ]
+       })
+   }
+
 
    render() {
+      const style = {
+         backgroundColor: '#284EC2',
+         color: '#fff',
+         fontSize: '18px',
+         padding: '3px 10px',
+         borderRadius: '10px',
+         margin: '10px',
+         cursor: 'pointer',
+         border: 'none'
+      }
       return (
          <div className = 'App' >
          <h1 > Learning React now!👩‍💻 </h1> 
-         <button onClick = {this.switchHandler} > Switch Name </button> 
+         <button style = {style} onClick = {this.switchHandler} > Switch Name </button> 
          <Person name = {this.state.person[0].name} job = {this.state.person[0].job} date = {this.state.person[0].date} click ={this.switchHandler.bind(this, 'Jack')}/>
-         <Person name = {this.state.person[1].name} job = {this.state.person[1].job} date = {this.state.person[1].date }/> 
+         <Person name = {this.state.person[1].name} job = {this.state.person[1].job} date = {this.state.person[1].date } changed={this.nameHandler}/> 
          <Person name = {this.state.person[2].name} job = {this.state.person[2].job} date = {this.state.person[2].date} click = {()=> this.switchHandler('Janice 💞')}/>
          <Person name = {this.state.person [3].name}job = {this.state.person[3].job} date = {this.state.person[3].date}/> 
          </div >
