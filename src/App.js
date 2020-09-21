@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
 
@@ -17,7 +17,7 @@ import Person from "./Person/Person";
 //    //   className: 'App'
 //    // }, React.createElement('h1', null, 'Learning React now! 👩‍💻 '));
 // }
-/*
+
 class App extends Component {
    state = {
       person: [{
@@ -45,12 +45,12 @@ class App extends Component {
 
 
 
-   switchHandler = () => {
+   switchHandler = (name) => {
       console.log('I was clicked!!')
 
       this.setState({   
          person: [{
-               name: 'Jenny',
+               name: name,
                job: 'devloper 👩‍💻 ',
                date: Date()
             },
@@ -80,16 +80,17 @@ class App extends Component {
          <div className = 'App' >
          <h1 > Learning React now!👩‍💻 </h1> 
          <button onClick = {this.switchHandler} > Switch Name </button> 
-         <Person name = {this.state.person[0].name} job = {this.state.person[0].job} date = {this.state.person[0].date}/> 
+         <Person name = {this.state.person[0].name} job = {this.state.person[0].job} date = {this.state.person[0].date} click ={this.switchHandler.bind(this, 'Jack')}/>
          <Person name = {this.state.person[1].name} job = {this.state.person[1].job} date = {this.state.person[1].date }/> 
-         <Person name = {this.state.person[2].name} job = {this.state.person[2].job} date = {this.state.person[2].date}/>
+         <Person name = {this.state.person[2].name} job = {this.state.person[2].job} date = {this.state.person[2].date} click = {()=> this.switchHandler('Janice 💞')}/>
          <Person name = {this.state.person [3].name}job = {this.state.person[3].job} date = {this.state.person[3].date}/> 
          </div >
       );
    }
 }
-*/
 
+export default App;
+/*
 const App = props =>{
 
   const [personState, personSetState] = useState({
@@ -124,31 +125,5 @@ const App = props =>{
 }
 
 export default App;
-
-/*
-<div className="App">
-      <h1> Learning React now!👩‍💻 </h1>
-      <button onClick = {switchHandler} > Switch Name </button> 
-      <Person
-        name={personState.person[0].name}
-        job={personState.person[0].job}
-        date={personState.person[0].date}
-      />
-      <Person
-        name={personState.person[1].name}
-        job={personState.person[1].job}
-        date={personState.person[1].date}
-      />
-      <Person
-        name={personState.person[2].name}
-        job={personState.person[2].job}
-        date={personState.person[2].date}
-      />
-      <Person
-        name={personState.person[3].name}
-        job={personState.person[3].job}
-        date={personState.person[3].date}
-      />
-    </div>
 
 */
