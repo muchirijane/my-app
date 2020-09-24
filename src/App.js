@@ -87,10 +87,11 @@ class App extends Component {
    }
 
    toggleHandler = () => {
-      const hidePersons = this.state.showPersons
-      this.setState({ showPersons: !hidePersons })
-
+      const showPerson = this.state.showPersons;
+      this.setState ({ showPersons: !showPerson });
    }
+
+
 
 
    render() {
@@ -104,18 +105,25 @@ class App extends Component {
          cursor: 'pointer',
          border: 'none'
       }
+
+      let person = null;
+      if(this.state.showPersons){
+         person = (
+            <div>
+               {this.state.person.map(person =>
+                  <Person name = {person.name}job = {person.job} date= {person.date}/>
+               )}
+            </div> 
+         );
+      
+      }
+
+
       return (
          <div className = 'App' >
-         <h1 > Learning React now!👩‍💻 </h1> 
-         <button style = {style} onClick = {this.toggleHandler} > Switch Name </button> 
-         { this.state.showPersons ?
-            <div>
-               <Person name = {this.state.person[0].name} job = {this.state.person[0].job} date = {this.state.person[0].date} click ={this.switchHandler.bind(this, 'Jack')}/>
-               <Person name = {this.state.person[1].name} job = {this.state.person[1].job} date = {this.state.person[1].date } changed={this.nameHandler}/> 
-               <Person name = {this.state.person[2].name} job = {this.state.person[2].job} date = {this.state.person[2].date} click = {()=> this.switchHandler('Janice 💞')}/>
-               <Person name = {this.state.person [3].name}job = {this.state.person[3].job} date = {this.state.person[3].date}/> 
-            </div> : null
-         }
+            <h1 > Learning React now!👩‍💻 </h1> 
+            <button style = {style} onClick = {this.toggleHandler} > Toggle Persons</button> 
+            {person}
          </div>
       );
    }
