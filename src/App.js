@@ -7,22 +7,22 @@ class App extends Component {
       person: [{
             name: 'Jane',
             job: 'devloper 👩‍💻 ',
-            date: Date()
+            
          },
          {
             name: 'Tracy',
             job: 'blogger 💻  ',
-            date: Date()
+            
          },
          {
             name: 'Jack',
             job: 'muscian 🎻 ',
-            date: Date()
+            
          },
          {
             name: 'Tom',
             job: 'actor 🎥 ',
-            date: Date()
+            
          },
       ],
       showPersons:false,
@@ -37,58 +37,39 @@ class App extends Component {
          person: [{
                name: name,
                job: 'devloper 👩‍💻 ',
-               date: Date()
+              
             },
             {
                name: 'Tracy',
                job: 'blogger 💻  ',
-               date: Date()
+               
             },
             {
                name: 'Jack',
                job: 'muscian 🎻 ',
-               date: Date()
+              
             },
             {
                name: 'Tom',
                job: 'actor 🎥 ',
-               date: Date()
+               
             },
 
          ]
       })
    };
 
-    nameHandler = (e) => {
-       this.setState({
-         person: [{
-            name: 'Jane',
-            job: 'devloper 👩‍💻 ',
-            date: Date()
-         },
-         {
-            name: e.target.value,
-            job: 'blogger 💻  ',
-            date: Date()
-         },
-         {
-            name: 'Jack',
-            job: 'muscian 🎻 ',
-            date: Date()
-         },
-         {
-            name: 'Tom',
-            job: 'actor 🎥 ',
-            date: Date()
-         },
-
-      ]
-       })
-   }
 
    toggleHandler = () => {
       const showPerson = this.state.showPersons;
       this.setState ({ showPersons: !showPerson });
+   }
+
+   deleteHandler = (personIndex) => {
+      const person = this.state.person;
+      person.splice(personIndex, 1);
+      this.setState({person : person});
+      console.log('I was clicked!!!' + person);
    }
 
 
@@ -110,8 +91,8 @@ class App extends Component {
       if(this.state.showPersons){
          person = (
             <div>
-               {this.state.person.map(person =>
-                  <Person name = {person.name}job = {person.job} date= {person.date}/>
+               {this.state.person.map((person, index) =>
+                  <Person click ={()=> this.deleteHandler(index)} name = {person.name}job = {person.job}/>
                )}
             </div> 
          );
