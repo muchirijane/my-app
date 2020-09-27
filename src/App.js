@@ -4,26 +4,11 @@ import Person from "./Person/Person";
 
 class App extends Component {
    state = {
-      person: [{
-            name: 'Jane',
-            job: 'devloper 👩‍💻 ',
-            
-         },
-         {
-            name: 'Tracy',
-            job: 'blogger 💻  ',
-            
-         },
-         {
-            name: 'Jack',
-            job: 'muscian 🎻 ',
-            
-         },
-         {
-            name: 'Tom',
-            job: 'actor 🎥 ',
-            
-         },
+      person: [
+         {id: 1, name: 'Jane', job: 'devloper 👩‍💻'},
+         {id: 2,name: 'Tracy', job: 'blogger 💻 '},
+         {id: 3, name: 'Jack', job: 'muscian 🎻'},
+         {id: 4, name: 'Tom', job: 'actor 🎥'},
       ],
       showPersons:false,
    };
@@ -59,6 +44,17 @@ class App extends Component {
       })
    };
 
+   nameChangeHandler = (e)=>{
+      this.setState({ 
+         person: [
+            {id: 1,name: e.target.value, job: 'devloper 👩‍💻 ' },
+            {id: 2,name: 'Tracy', job: 'blogger 💻'},
+            {id: 3,name: 'Jack', job: 'muscian 🎻'},
+            {id: 4,name: 'Tom', job: 'actor 🎥 '},
+         ]
+      });
+   }
+
 
    toggleHandler = () => {
       const showPerson = this.state.showPersons;
@@ -66,7 +62,8 @@ class App extends Component {
    }
 
    deleteHandler = (personIndex) => {
-      const person = this.state.person;
+      //updating the state in a immutable way- copy of the original state
+      const person = [...this.state.person.slice()];
       person.splice(personIndex, 1);
       this.setState({person : person});
       console.log('I was clicked!!!' + person);
@@ -92,7 +89,7 @@ class App extends Component {
          person = (
             <div>
                {this.state.person.map((person, index) =>
-                  <Person click ={()=> this.deleteHandler(index)} name = {person.name}job = {person.job}/>
+                  <Person click ={()=> this.deleteHandler(index)} changed={this.nameChangeHandler} name = {person.name}job = {person.job} key = {person.id}/>
                )}
             </div> 
          );
