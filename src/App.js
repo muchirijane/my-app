@@ -44,15 +44,17 @@ class App extends Component {
       })
    };
 
-   nameChangeHandler = (e)=>{
-      this.setState({ 
-         person: [
-            {id: 1,name: e.target.value, job: 'devloper 👩‍💻 ' },
-            {id: 2,name: 'Tracy', job: 'blogger 💻'},
-            {id: 3,name: 'Jack', job: 'muscian 🎻'},
-            {id: 4,name: 'Tom', job: 'actor 🎥 '},
-         ]
-      });
+   nameChangeHandler = (e, id)=>{
+      const personIndex = this.state.person.findIndex(p=>p.id === id);
+
+      const personCard = {...this.state.person[personIndex]};
+
+      personCard.name = e.target.value;
+      const person = this.state.person;
+      person[personIndex] = personCard;
+      this.setState({person: person});
+
+      
    }
 
 
@@ -89,7 +91,10 @@ class App extends Component {
          person = (
             <div>
                {this.state.person.map((person, index) =>
-                  <Person click ={()=> this.deleteHandler(index)} changed={this.nameChangeHandler} name = {person.name}job = {person.job} key = {person.id}/>
+                  <Person 
+                  click ={()=> this.deleteHandler(index)} 
+                  changed={(e)=>this.nameChangeHandler(e,person.id)} 
+                  name = {person.name}job = {person.job} key = {person.id}/>
                )}
             </div> 
          );
