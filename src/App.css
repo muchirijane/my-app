@@ -1,4 +1,12 @@
 .App {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+}
+
+.red {
+  color: #ff9ebb;
+}
+
+.bold {
+  font-weight: bold;
 }

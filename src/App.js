@@ -98,13 +98,25 @@ class App extends Component {
                )}
             </div> 
          );
+
+         style.backgroundColor = '#472d30';
       
+      }
+
+      // let warningText = ['red', 'bold'].join(' ');
+      const warningText = [];
+      if (this.state.person.length <= 2){
+         warningText.push('red');
+      }
+      if (this.state.person.length <= 1){
+         warningText.push('bold');
       }
 
 
       return (
          <div className = 'App' >
             <h1 > Learning React now!👩‍💻 </h1> 
+            <p className = {warningText.join(' ')}>Red flag ⛳ </p>
             <button style = {style} onClick = {this.toggleHandler} > Toggle Persons</button> 
             {person}
          </div>
