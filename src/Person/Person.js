@@ -1,19 +1,29 @@
 import React from 'react';
-import './Person.css';
-import Radium from 'radium'
+import styled from 'styled-components';
+
 
 const Person = (props) => {
-   const mediaQuery ={
-      '@media only screen and (max-width: 500px)': {
-            width : '50%',
-      }
-   }
+
+   const PersonStyled = styled.div`
+    width: 800px;
+    margin: auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    @media only screen and (max-width: 500px){
+          width: 50%;
+  }
+`;
+   
    return (
-      <div className = 'Person' style = {mediaQuery}>
+      <PersonStyled>
          <p onClick={props.click}>I am {props.name} and I am a {props.job}.</p>
          <input type="text" onChange={props.changed} value={props.name}></input>
-      </div>
+      </PersonStyled>
    );
 };
 
-export default Radium(Person);
+export default Person;
