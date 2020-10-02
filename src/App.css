@@ -10,3 +10,20 @@
 .bold {
   font-weight: bold;
 }
+
+.button {
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+
+  background-color: lightgreen;
+  color: #000;
+}

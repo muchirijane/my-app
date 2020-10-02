@@ -1,25 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import styled from 'styled-components';
 
 import Person from './Person/Person';
 
-const ButtonStyle = styled.button `
-   background-color: ${props => props.alt ? "pink" : "blue"};
-   color: ${props => props.alt ? "black" : "white"};
-   font-size: 18px;
-   padding: 3px 10px;
-   border-radius: 10px;
-   margin: 10px;
-   cursor: pointer;
-   border: none;
-   &:hover {
-      background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-      color: #000;
-   }
-         
-         
-`;
 
 class App extends Component {
    state = {
@@ -124,7 +107,7 @@ class App extends Component {
             <div className="App">
                <h1 > Learning React now!👩‍💻 </h1> 
                <p className = {warningText.join(' ')}>Red flag ⛳ </p>
-               <ButtonStyle alt={this.state.showPersons} onClick = {this.toggleHandler} > Toggle Persons</ButtonStyle> 
+               <button className = 'button' onClick = {this.toggleHandler} > Toggle Persons</button> 
                {person}
             </div>
          
