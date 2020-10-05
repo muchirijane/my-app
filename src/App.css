@@ -11,7 +11,7 @@
   font-weight: bold;
 }
 
-.button {
+.Button {
   background-color: blue;
   color: white;
   font-size: 18px;
@@ -22,7 +22,7 @@
   border: none;
 }
 
-.button:hover {
+.Button:hover {
 
   background-color: lightgreen;
   color: #000;

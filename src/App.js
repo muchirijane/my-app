@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
+import  "./App.css";
+import classes from "./App.module.css";
 
 import Person from './Person/Person';
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 
 class App extends Component {
@@ -47,7 +49,7 @@ class App extends Component {
    };
 
    nameChangeHandler = (e, id)=>{
-      const personIndex = this.state.person.findIndex(p=>p.id === id);
+      const personIndex = this.state.person.findIndex(p=>p.userId === id);
 
       const personCard = {...this.state.person[personIndex]};
 
@@ -76,38 +78,43 @@ class App extends Component {
    render() {
 
       let person = null;
+      let btnClass = [classes.Button];
       if(this.state.showPersons){
+         
          person = (
             <div>
                {this.state.person.map((person, index) =>
+               <ErrorBoundary key ={person.id}>
                   <Person 
                   click ={()=> this.deleteHandler(index)} 
                   changed={(e)=>this.nameChangeHandler(e,person.id)} 
-                  name = {person.name}job = {person.job} key = {person.id}/>
+                  name = {person.name}job = {person.job}/>
+               </ErrorBoundary>
                )}
             </div> 
          );
-
          
+
+        btnClass.push(classes.Red) 
       
       }
 
       // let warningText = ['red', 'bold'].join(' ');
       const warningText = [];
       if (this.state.person.length <= 2){
-         warningText.push('red');
+         warningText.push('classes.red'); // class ['red']
       }
       if (this.state.person.length <= 1){
-         warningText.push('bold');
+         warningText.push('classes.bold');  //class ['red','bold']
       }
 
 
       return (
          
-            <div className="App">
+            <div className={classes.App}>
                <h1 > Learning React now!👩‍💻 </h1> 
                <p className = {warningText.join(' ')}>Red flag ⛳ </p>
-               <button className = 'button' onClick = {this.toggleHandler} > Toggle Persons</button> 
+               <button className = {btnClass.join(' ')} onClick = {this.toggleHandler} > Toggle Persons</button> 
                {person}
             </div>
          

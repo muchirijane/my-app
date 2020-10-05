@@ -1,28 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import classes from './Person.module.css';
 
 
 const Person = (props) => {
+   const randomNumber = Math.random() ;
+   console.log(randomNumber)
 
-   const PersonStyled = styled.div`
-    width: 800px;
-    margin: auto;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 3px #ccc;
-    padding: 16px;
-    text-align: center;
-    margin-bottom: 30px;
-
-    @media only screen and (max-width: 500px){
-          width: 50%;
-  }
-`;
+   if(randomNumber > 0.7){
+      throw new Error('This is an error message')
+   }
    
    return (
-      <PersonStyled>
+      <div className={classes.Person}>
          <p onClick={props.click}>I am {props.name} and I am a {props.job}.</p>
          <input type="text" onChange={props.changed} value={props.name}></input>
-      </PersonStyled>
+      </div>
    );
 };
 
